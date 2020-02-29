@@ -1,4 +1,4 @@
-# springboot2-meetingmng
+# springboot2-meeting-mng
 This is a simple example of how to implement a meeting management MVC web application using Spring Boot 2
 
 © 2020 Daniel Pinheiro Maia All Rights Reserved<br>

@@ -1,15 +1,32 @@
 package com.danielpm1982.springboot2meetingmng.domain;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity
+@Table(name="PERSON")
 public class Person {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="PERSON_ID")
     private Long id;
+    @Column(name="PERSON_NAME")
     private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(name="PERSON_GENDER")
     private Gender gender;
+    @Column(name="PERSON_POSITION")
     private String position;
+    @Column(name="PERSON_COMPANY")
     private String company;
+    @Column(name="PERSON_BIRTH_DATE")
     private LocalDate birthDate;
+    @Column(name="PERSON_EMAIL")
     private String email;
+    @Column(name="PERSON_DETAILS")
     private String details;
+    @ManyToMany(mappedBy="personList")
+    private List<Meeting> meetingList;
     public Person() {
     }
     public Person(String name, Gender gender, LocalDate birthDate, String email) {
@@ -65,6 +82,12 @@ public class Person {
     }
     public void setDetails(String details) {
         this.details = details;
+    }
+    public List<Meeting> getMeetingList() {
+        return meetingList;
+    }
+    public void setMeetingList(List<Meeting> meetingList) {
+        this.meetingList = meetingList;
     }
     public String toString() {
         return "Person{" +

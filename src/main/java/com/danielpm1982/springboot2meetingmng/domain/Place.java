@@ -1,14 +1,30 @@
 package com.danielpm1982.springboot2meetingmng.domain;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name="PLACE")
 public class Place {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="PLACE_ID")
     private Long id;
+    @Column(name="PLACE_STREET")
     private String street;
+    @Column(name="PLACE_NUMBER")
     private Integer number;
+    @Column(name="PLACE_ZIP_CODE")
     private String zipCode;
+    @Column(name="PLACE_CITY")
     private String city;
+    @Column(name="PLACE_STATE")
     private String state;
+    @Column(name="PLACE_COUNTRY")
     private String country;
+    @Column(name="PLACE_DETAILS")
     private String details;
+    @OneToMany(mappedBy="place")
+    private List<Meeting> meetingList;
     public Place() {
     }
     public Place(String street, Integer number, String city, String state, String country) {
@@ -65,6 +81,12 @@ public class Place {
     }
     public void setDetails(String details) {
         this.details = details;
+    }
+    public List<Meeting> getMeetingList() {
+        return meetingList;
+    }
+    public void setMeetingList(List<Meeting> meetingList) {
+        this.meetingList = meetingList;
     }
     @Override
     public String toString() {

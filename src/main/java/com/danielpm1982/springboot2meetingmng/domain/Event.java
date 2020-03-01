@@ -1,13 +1,27 @@
 package com.danielpm1982.springboot2meetingmng.domain;
+import javax.persistence.*;
 
+@Entity
+@Table(name="EVENT")
 public class Event {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="EVENT_ID")
     private Long id;
+    @Column(name="EVENT_NAME")
     private String name;
+    @Column(name="EVENT_THEME")
     private String theme;
+    @Column(name="EVENT_OUTFIT")
     private String outfit;
+    @Column(name="EVENT_HOST")
     private String host;
+    @Column(name="EVENT_ATTENDANCE")
     private Integer attendance;
+    @Column(name="EVENT_DETAILS")
     private String details;
+    @OneToOne(mappedBy="event")
+    private Meeting meeting;
     public Event() {
     }
     public Event(String name, String theme, String outfit, String host, Integer attendance) {
@@ -59,6 +73,12 @@ public class Event {
     public void setDetails(String details) {
         this.details = details;
     }
+    public Meeting getMeeting() {
+        return meeting;
+    }
+    public void setMeeting(Meeting meeting) {
+        this.meeting = meeting;
+    }
     @Override
     public String toString() {
         return "Event{" +
@@ -69,6 +89,7 @@ public class Event {
                 ", host='" + host + '\'' +
                 ", attendance=" + attendance +
                 ", details='" + details + '\'' +
+                ", meeting=" + meeting +
                 '}';
     }
     @Override

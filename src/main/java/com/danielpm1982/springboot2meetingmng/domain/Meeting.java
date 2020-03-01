@@ -1,21 +1,33 @@
 package com.danielpm1982.springboot2meetingmng.domain;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
+@Table(name="MEETING")
 public class Meeting {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="MEETING_ID")
     private Long id;
+    @ManyToMany
+    @JoinTable(name = "MEETING_PERSON",joinColumns=@JoinColumn(name="MEETING_ID_FK"),inverseJoinColumns=@JoinColumn(name="PERSON_ID_FK"))
     private List<Person> personList;
+    @ManyToOne
+    @JoinColumn(name="MEETING_PLACE_ID_FK")
     private Place place;
+    @OneToOne
+    @JoinColumn(name="MEETING_EVENT_ID_FK")
     private Event event;
+    @Column(name="MEETING_START")
     private LocalDateTime localDateTimeStart;
+    @Column(name="MEETING_END")
     private LocalDateTime localDateTimeEnd;
+    @Column(name="MEETING_DETAILS")
     private String details;
     public Meeting() {
     }
-    public Meeting(List<Person> personList, Place place, Event event, LocalDateTime localDateTimeStart, LocalDateTime localDateTimeEnd) {
-        this.personList = personList;
-        this.place = place;
-        this.event = event;
+    public Meeting(LocalDateTime localDateTimeStart, LocalDateTime localDateTimeEnd) {
         this.localDateTimeStart = localDateTimeStart;
         this.localDateTimeEnd = localDateTimeEnd;
     }

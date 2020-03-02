@@ -83,3 +83,4 @@ public class Test {
 
 //improvised testing class to be called from the ApplicationContext using the "test" bean name.
 //substitute for JUnit5 testing class later.
+//see png files with the H2 DB state after this testing class runs.

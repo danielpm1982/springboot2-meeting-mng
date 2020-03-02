@@ -27,3 +27,7 @@ select MEETING_ID, MEETING_START, MEETING_END, MEETING_DETAILS, MEETING_EVENT_ID
 
 select * from MEETING_JOIN_PERSON_JOIN_EVENT_JOIN_PLACE
 */
+
+/*
+See the png files at the test folder with the DB state after running the test above.
+*/

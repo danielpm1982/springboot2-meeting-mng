@@ -10,7 +10,7 @@ public class Meeting {
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="MEETING_ID")
     private Long id;
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "MEETING_PERSON",joinColumns=@JoinColumn(name="MEETING_ID_FK"),inverseJoinColumns=@JoinColumn(name="PERSON_ID_FK"))
     private List<Person> personList;
     @ManyToOne

@@ -23,7 +23,7 @@ public class Place {
     private String country;
     @Column(name="PLACE_DETAILS")
     private String details;
-    @OneToMany(mappedBy="place")
+    @OneToMany(mappedBy="place", fetch=FetchType.EAGER)
     private List<Meeting> meetingList;
     public Place() {
     }

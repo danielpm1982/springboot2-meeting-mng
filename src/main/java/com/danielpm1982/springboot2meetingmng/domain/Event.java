@@ -89,7 +89,6 @@ public class Event {
                 ", host='" + host + '\'' +
                 ", attendance=" + attendance +
                 ", details='" + details + '\'' +
-                ", meeting=" + meeting +
                 '}';
     }
     @Override

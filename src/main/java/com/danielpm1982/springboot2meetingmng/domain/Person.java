@@ -25,7 +25,7 @@ public class Person {
     private String email;
     @Column(name="PERSON_DETAILS")
     private String details;
-    @ManyToMany(mappedBy="personList")
+    @ManyToMany(mappedBy="personList", fetch=FetchType.EAGER)
     private List<Meeting> meetingList;
     public Person() {
     }

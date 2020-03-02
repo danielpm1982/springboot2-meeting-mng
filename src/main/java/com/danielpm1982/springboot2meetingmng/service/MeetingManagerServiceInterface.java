@@ -6,15 +6,20 @@ import java.util.List;
 
 @Service
 public interface MeetingManagerServiceInterface {
+    Event addEvent(Event event);
     Event findEventById(Long id);
     List<Event> findAllEvents();
     List<Event> findEventByName(String nameOfEvent);
+    Meeting addMeeting(Meeting meeting);
     Meeting findMeetingById(Long id);
     List<Meeting> findAllMeetings();
     Meeting findMeetingByLocalDateTimeStart(LocalDateTime localDateTimeStart);
+    Person addPerson(Person person);
+    List<Person> addPersonList(List<Person> personList);
     Person findPersonById(Long id);
     List<Person> findAllPersons();
     Person findPersonByName(String nameOfPerson);
+    Place addPlace(Place place);
     Place findPlaceById(Long id);
     List<Place> findAllPlaces();
     Place findPlaceByStreetAndNumber(String streetOfPlace, Integer numberOfPlace);

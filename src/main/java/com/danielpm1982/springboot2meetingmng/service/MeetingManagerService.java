@@ -25,6 +25,10 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
         this.placeRepository = placeRepository;
     }
     @Override
+    public Event addEvent(Event event) {
+        return eventRepository.save(event);
+    }
+    @Override
     public Event findEventById(Long id) {
         return eventRepository.findById(id).orElse(null);
     }
@@ -39,6 +43,10 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
         return eventRepository.findByName(nameOfEvent);
     }
     @Override
+    public Meeting addMeeting(Meeting meeting) {
+        return meetingRepository.save(meeting);
+    }
+    @Override
     public Meeting findMeetingById(Long id) {
         return meetingRepository.findById(id).orElse(null);
     }
@@ -51,6 +59,16 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
     @Override
     public Meeting findMeetingByLocalDateTimeStart(LocalDateTime localDateTimeStart) {
         return meetingRepository.findByLocalDateTimeStart(localDateTimeStart);
+    }
+    @Override
+    public Person addPerson(Person person) {
+        return personRepository.save(person);
+    }
+    @Override
+    public List<Person> addPersonList(List<Person> personList) {
+        List<Person> result = new ArrayList<>();
+        personRepository.saveAll(personList).forEach(result::add);
+        return result;
     }
     @Override
     public Person findPersonById(Long id) {
@@ -69,6 +87,10 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
     @Override
     public Place findPlaceById(Long id) {
         return placeRepository.findById(id).orElse(null);
+    }
+    @Override
+    public Place addPlace(Place place) {
+        return placeRepository.save(place);
     }
     @Override
     public List<Place> findAllPlaces() {

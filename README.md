@@ -17,7 +17,7 @@ This is a Meeting Management Web MVC application developed with Spring Boot 2
 [**Description of this repository**]<br>
 This is a Meeting Management Web MVC application developed with Spring Boot 2, along with HTML5, CSS, Thymeleaf, Spring Web MVC, Spring Data JPA (Hibernate) and H2 in-memory database (easily extendable to use any other DBMS). Stereotype annotations used: @Controller, @RequestMapping, @GetMapping, @PostMapping, @Autowired (implicitly), @Service, @Repository and persistence annotations: @Entity, @Table, @Id, @GeneratedValue, @Column, @OneToOne, @OneToMany, @ManyToOne, @ManyToMany, @JoinColumn, @JoinTable, @Query, @Enumerated. For more info, read the project comments at each class, starting from the @SpringBootApplication Main class.
 
-The backlog for this agile developed project is simulated through the sequence of its GitHub issues, and respective reffered commits, available at: https://github.com/danielpm1982/springboot2-meeting-mng/issues?q=is%3Aissue .
+The backlog for this agile developed project is simulated through the sequence of its GitHub issues, and respective referred commits, available at: https://github.com/danielpm1982/springboot2-meeting-mng/issues?q=is%3Aissue .
 
 This repository is a single-project repo with Git version control.
 

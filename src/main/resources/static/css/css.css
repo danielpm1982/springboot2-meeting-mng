@@ -1,0 +1,188 @@
+body{
+    font-family: sans-serif;
+    text-align: center;
+    background-color: black;
+    color: antiquewhite;
+    margin-top: 3em;
+    margin-bottom: 4em;
+}
+.centralContent{
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.table{
+    display: table;
+    width: 60%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 1em;
+}
+.row{
+    display: table-row;
+}
+.cell{
+    display: table-cell;
+    font-size: 1.5em;
+    font-weight: bolder;
+    background-color: azure;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+.cell a{
+    text-decoration: none;
+}
+.tableResult{
+    display: table;
+    width: 90%;
+    margin: 4em auto 4em auto;
+    border-collapse: collapse;
+}
+.rowResult, .rowResultHeader{
+    display: table-row;
+}
+.cellResult{
+    display: table-cell;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 1em;
+    border: lightblue solid thin;
+}
+.cellResult img{
+    width: 40px;
+    margin-top: 1em;
+}
+.tableResult .rowResult:nth-child(2n+1){
+    background-color: azure;
+    color: black;
+}
+.tableResult .rowResult:nth-child(2n){
+    background-color: antiquewhite;
+    color: black;
+}
+.tableResult .rowResultHeader{
+    background-color: darkblue;
+    font-weight: bolder;
+    color: blanchedalmond;
+}
+a:link{
+    color: green;
+}
+a:visited{
+    color: teal;
+}
+a:hover{
+    color: lime;
+}
+a:active{
+    color: red;
+}
+footer{
+    font-size: 1.2em;
+    width: 90%;
+    margin: auto;
+    line-height: 2;
+    margin-top: 2em;
+}
+footer p{
+    margin-bottom: -0.025em;
+}
+footer a{
+    font-weight: lighter;
+    background-color: black;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 2;
+    text-decoration: none;
+}
+img#meeting{
+    width: 19em;;
+}
+img#meeting2{
+    width: 18em;
+    margin-right: 2em
+}
+img#meeting3{
+    width: 24em;
+}
+img#meeting4{
+    margin-left: 0.6em;
+    width: 24em;
+}
+ul{
+    margin-left: -1.5em;
+    text-align: justify;
+    list-style: none;
+    margin-right: 0.7em;
+}
+form{
+    width: 40%;
+    margin: 3em auto 1em auto;
+}
+input{
+    padding: 0.7em;
+    width: 90%;
+    font-size: 1.3em;
+    margin: 0.4em auto 0.4em auto;
+}
+input[type="radio"], legend, fieldset, label{
+    text-align: left;
+    font-size: 1em;
+    margin: 0em;
+    padding: 0em;
+}
+input[type="radio"]{
+    width: 5%;
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+}
+legend{
+    margin-left: 1em;
+}
+fieldset{
+    width: 95%;
+    margin: 0.2em 0em 0.7em 0.95em;
+    padding-bottom: 1em;
+}
+ul, li{
+    display: inline;
+}
+input[type="submit"], input[type="button"]{
+    font-weight: bolder;
+    width: 20%;
+    padding: 0.5em 1em 0.5em 1em;
+}
+input[type="date"], input[type="time"]{
+    font-size: 1.5em;
+    padding: 0.9em;
+    width: 89.5%;
+}
+textarea{
+    width: 92.5%;
+    min-height: 6em;
+    padding: 0.5em;
+    font-size: 1.62em;
+    margin: 0.7em auto 1.2em auto;
+}
+.error{
+    background-color: yellow;
+    color: red;
+    padding: 0.2em;
+    font-size: 1.2em;
+    font-weight: bolder;
+    width: 38%;
+    margin: auto auto -2em auto;
+}
+select{
+    padding: 0.5em;
+    width: 40%;
+    font-size: 1.1em;
+    margin: 0.4em auto 0.4em auto;
+}
+select.meeting{
+    width: 47.5%;
+}
+select.meetingMultiple{
+    width: 95.5%;
+}

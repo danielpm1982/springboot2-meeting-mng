@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" th:href="@{/css/css.css}">
+</head>
+<body>
+    <h1>UPDATE A MEETING</h1>
+    <form action="#" method="post" th:action="@{/update-meeting}" th:object="${meetingModelAttribute}">
+        <input type="text" required="required" readonly title="meeting Id" th:field="*{id}" /><br>
+        <input type="date" required="required" title="type/select the start date" th:field="*{localDateStart}" /><br>
+        <input type="time" required="required" title="type/select the start time" th:field="*{localTimeStart}" /><br>
+        <input type="date" required="required" title="type/select the end date" th:field="*{localDateEnd}" /><br>
+        <input type="time" required="required" title="type/select the end time" th:field="*{localTimeEnd}" /><br>
+        <select class="meeting" required="required" title="select the event" th:field="*{eventId}">
+            <option th:selected="selected" th:disabled="disabled" th:value="0" th:text="'Select event...'" />
+            <option th:each="idName : ${availableEventIdNameMap}" th:value="${idName.key}" th:text="${'id: '+idName.key+' - '+idName.value}" />
+        </select>
+        <select class="meeting" required="required" title="select the place" th:field="*{placeId}">
+            <option th:selected="selected" th:disabled="disabled" th:value="0" th:text="'Select place...'" />
+            <option th:each="idName : ${availablePlaceIdAddressMap}" th:value="${idName.key}" th:text="${'id: '+idName.key+' - '+idName.value}" />
+        </select>
+        <select class="meetingMultiple" required="required" title="select the people attending the meeting" th:multiple="multiple" th:field="*{personIdList}">
+            <option th:selected="selected" th:disabled="disabled" th:value="notSelected" th:text="'Select persons...'" />
+            <option th:each="idName : ${availablePersonIdNameMap}" th:value="${idName.key}" th:text="${'id: '+idName.key+' '+idName.value}" />
+        </select><br>
+        <textarea placeholder="details <optional>" title="type any remaining details you want" maxlength="5000" th:field="*{details}" /><br>
+        <input type="submit" value="UPDATE" />
+        <input type="button" value="CLEAR" onclick="window.location.href='/update-meeting-form';" />
+    </form>
+    <footer>
+        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+    </footer>
+</body>

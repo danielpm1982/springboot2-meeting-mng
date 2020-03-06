@@ -43,7 +43,11 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
         return eventRepository.findByName(nameOfEvent);
     }
     @Override
-    public Meeting addMeeting(Meeting meeting) {
+    public Event findEventByExactName(String nameOfEvent) {
+        return eventRepository.findByExactName(nameOfEvent);
+    }
+    @Override
+    public Meeting addOrUpdateMeeting(Meeting meeting) {
         return meetingRepository.save(meeting);
     }
     @Override
@@ -59,6 +63,10 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
     @Override
     public Meeting findMeetingByLocalDateTimeStart(LocalDateTime localDateTimeStart) {
         return meetingRepository.findByLocalDateTimeStart(localDateTimeStart);
+    }
+    @Override
+    public void deleteMeetingById(Long meetingId) {
+        meetingRepository.deleteById(meetingId);
     }
     @Override
     public Person addPerson(Person person) {
@@ -81,7 +89,7 @@ public class MeetingManagerService implements MeetingManagerServiceInterface{
         return resultList;
     }
     @Override
-    public Person findPersonByName(String nameOfPerson) {
+    public List<Person> findPersonByName(String nameOfPerson) {
         return personRepository.findByName(nameOfPerson);
     }
     @Override

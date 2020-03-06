@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" th:href="@{/css/css.css}">
+</head>
+<body>
+    <h1>ADD A PERSON</h1>
+    <form action="#" method="post" th:action="@{/add-person}" th:object="${personModelAttribute}">
+        <input type="text" placeholder="name" required="required" title="type your name" th:field="*{name}" /><br>
+
+<!--        <fieldset>-->
+<!--            <legend>Gender</legend><br>-->
+<!--            <input type="radio" th:field="*{gender}" th:value="MALE" th:selected="false" th:required="required" />-->
+<!--            <label th:for="${#ids.prev('gender')}" th:text="Male" />-->
+<!--            <input type="radio" th:field="*{gender}" th:value="FEMALE" th:selected="false" />-->
+<!--            <label th:for="${#ids.prev('gender')}" th:text="Female" />-->
+<!--        </fieldset>-->
+
+        <fieldset>
+            <legend>Gender</legend><br>
+                <ul>
+                    <li th:each="gender : ${genderOptions}">
+                        <input type="radio" th:field="*{gender}" th:value="${gender.value}" th:selected="false" th:required="required" />
+                        <label th:for="${#ids.prev('gender')}" th:text="${gender.key}"></label>
+                    </li>
+                </ul>
+            </legend>
+        </fieldset>
+        <input type="date" required="required" title="type/select your birthDate" th:field="*{birthDate}" /><br>
+        <input type="email" placeholder="email@email.com" required="required" title="type your email" th:field="*{email}" /><br>
+        <input type="text" placeholder="position <optional>" title="type your position" th:field="*{position}" /><br>
+        <input type="text" placeholder="company <optional>" title="type your company" th:field="*{company}" /><br>
+        <textarea placeholder="details <optional>" title="type any remaining details you want" maxlength="5000" th:field="*{details}" /><br>
+        <input type="submit" value="ADD" />
+        <input type="button" value="CLEAR" onclick="window.location.href='/add-person-form';" />
+    </form>
+    <footer>
+        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+    </footer>
+</body>

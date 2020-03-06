@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name="EVENT")
 public class Event {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="EVENT_ID")
     private Long id;
     @Column(name="EVENT_NAME")
@@ -18,7 +18,7 @@ public class Event {
     private String host;
     @Column(name="EVENT_ATTENDANCE")
     private Integer attendance;
-    @Column(name="EVENT_DETAILS")
+    @Column(name="EVENT_DETAILS", length = 65535, columnDefinition = "text")
     private String details;
     @OneToOne(mappedBy="event")
     private Meeting meeting;

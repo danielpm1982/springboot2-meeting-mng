@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name="MEETING")
 public class Meeting {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="MEETING_ID")
     private Long id;
     @ManyToMany(fetch=FetchType.EAGER)
@@ -23,7 +23,7 @@ public class Meeting {
     private LocalDateTime localDateTimeStart;
     @Column(name="MEETING_END")
     private LocalDateTime localDateTimeEnd;
-    @Column(name="MEETING_DETAILS")
+    @Column(name="MEETING_DETAILS", length = 65535, columnDefinition = "text")
     private String details;
     public Meeting() {
     }

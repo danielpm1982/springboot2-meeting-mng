@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body>
+    <h1>Welcome to the Meeting Management Catalog !</h1>
+    <h3 th:text="${dateTime}"></h3>
+    <div class="centralContent">
+        <a href="/meetings" title="show all meetings">
+            <img id="meeting2" src="img/meeting2.png" title="show all meetings">
+        </a>
+        <a href="/persons" title="show all persons">
+            <img id="meeting" src="img/meeting.png" title="show all persons">
+        </a>
+        <a href="/events" title="show all events">
+            <img id="meeting3" src="img/meeting3.png" title="show all events">
+        </a>
+        <a href="/places" title="show all places">
+            <img id="meeting4" src="img/meeting4.png" title="show all places">
+        </a>
+    </div>
+    <div class="table">
+        <div class="row">
+            <span class="cell"><a href="/meetings" title="list all meetings">List all Meetings</a></span>
+            <span class="cell"><a href="/persons" title="list all persons">List all Persons</a></span>
+            <span class="cell"><a href="/events" title="list all events">List all Events</a></span>
+            <span class="cell"><a href="/places" title="list all places">List all Places</a></span>
+        </div>
+        <div class="row">
+            <span class="cell"><a href="/add-meeting-form" title="add meeting">Add Meeting</a></span>
+            <span class="cell"><a href="/add-person-form" title="add person">Add Person</a></span>
+            <span class="cell"><a href="/add-event-form" title="add event">Add Event</a></span>
+            <span class="cell"><a href="/add-place-form" title="add place">Add Place</a></span>
+        </div>
+    </div>
+    <footer>
+        <p>Developed by:</p>
+        <a href="http://www.danielpm1982.com">danielpm1982.com</a>
+        <br>
+        <a href="mailto:danielpm1982.com@domainsbyproxy.com">danielpm1982.com@domainsbyproxy.com</a>
+    </footer>
+</body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" th:href="@{/css/css.css}">
+</head>
+<body>
+    <h1>ADD A PLACE</h1>
+    <div class="error" th:if="${error} != null">
+        <p th:text="${error}">Error !</p>
+    </div>
+    <form action="#" method="post" th:action="@{/add-place}" th:object="${placeModelAttribute}">
+        <input type="text" placeholder="street" required="required" title="type your street name" th:field="*{street}" /><br>
+        <input type="number" placeholder="street number" required="required" min="1" value="0" title="type your street number" th:field="*{number}" /><br>
+        <input type="text" placeholder="zipCode <optional>" title="type your zipCode" th:field="*{zipCode}" /><br>
+        <input type="text" placeholder="city" required="required" title="type your city name" th:field="*{city}" /><br>
+        <input type="text" placeholder="state" required="required" title="type your state name" th:field="*{state}" /><br>
+        <input type="text" placeholder="country" required="required" title="type your country name" th:field="*{country}" /><br>
+        <textarea placeholder="details <optional>" title="type any remaining details you want" maxlength="5000" th:field="*{details}" /><br>
+        <input type="submit" value="ADD" />
+        <input type="button" value="CLEAR" onclick="window.location.href='/add-place-form';" />
+    </form>
+    <footer>
+        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+    </footer>
+</body>

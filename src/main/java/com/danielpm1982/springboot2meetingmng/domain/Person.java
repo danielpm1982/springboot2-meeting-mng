@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name="PERSON")
 public class Person {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="PERSON_ID")
     private Long id;
     @Column(name="PERSON_NAME")
@@ -23,7 +23,7 @@ public class Person {
     private LocalDate birthDate;
     @Column(name="PERSON_EMAIL")
     private String email;
-    @Column(name="PERSON_DETAILS")
+    @Column(name="PERSON_DETAILS", length = 65535, columnDefinition = "text")
     private String details;
     @ManyToMany(mappedBy="personList", fetch=FetchType.EAGER)
     private List<Meeting> meetingList;

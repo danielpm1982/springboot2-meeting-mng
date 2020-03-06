@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" th:href="@{/css/css.css}">
+</head>
+<body>
+    <h1>ADD AN EVENT</h1>
+    <div class="error" th:if="${error} != null">
+        <p th:text="${error}">Error !</p>
+    </div>
+    <form action="#" method="post" th:action="@{/add-event}" th:object="${eventModelAttribute}">
+        <input type="text" placeholder="name" required="required" title="type the event name" th:field="*{name}" /><br>
+        <input type="text" placeholder="theme" required="required" title="type the event theme" th:field="*{theme}" /><br>
+        <input type="text" placeholder="outfit" required="required" title="type the event outfit" th:field="*{outfit}" /><br>
+        <input type="text" placeholder="host" required="required" title="type the event host" th:field="*{host}" /><br>
+        <input type="text" placeholder="attendance" required="required" title="type the attendance expected" th:field="*{attendance}" /><br>
+        <textarea placeholder="details <optional>" title="type any remaining details you want" maxlength="5000" th:field="*{details}" /><br>
+        <input type="submit" value="ADD" />
+        <input type="button" value="CLEAR" onclick="window.location.href='/add-event-form';" />
+    </form>
+    <footer>
+        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+    </footer>
+</body>

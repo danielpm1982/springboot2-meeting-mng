@@ -6,7 +6,7 @@ import java.util.List;
 @Table(name="PLACE")
 public class Place {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="PLACE_ID")
     private Long id;
     @Column(name="PLACE_STREET")
@@ -21,7 +21,7 @@ public class Place {
     private String state;
     @Column(name="PLACE_COUNTRY")
     private String country;
-    @Column(name="PLACE_DETAILS")
+    @Column(name="PLACE_DETAILS", length = 65535, columnDefinition = "text")
     private String details;
     @OneToMany(mappedBy="place", fetch=FetchType.EAGER)
     private List<Meeting> meetingList;

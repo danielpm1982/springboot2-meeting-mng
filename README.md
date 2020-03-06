@@ -12,7 +12,7 @@ This is a Meeting Management Web MVC application developed with Spring Boot 2
 
 ![updateMeetings](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/updateMeeting.png)
 
-![DB-state-full-join](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/fullJoin.png)
+![DB-state-full-join-after-initial-sample-population](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/fullJoin.png)
 
 [**Description of this repository**]<br>
 This is a Meeting Management Web MVC application developed with Spring Boot 2, along with HTML5, CSS, Thymeleaf, Spring Web MVC, Spring Data JPA (Hibernate) and H2 in-memory database (easily extendable to use any other DBMS). Stereotype annotations used: @Controller, @RequestMapping, @GetMapping, @PostMapping, @Autowired (implicitly), @Service, @Repository and persistence annotations: @Entity, @Table, @Id, @GeneratedValue, @Column, @OneToOne, @OneToMany, @ManyToOne, @ManyToMany, @JoinColumn, @JoinTable, @Query, @Enumerated. For more info, read the project comments at each class, starting from the @SpringBootApplication Main class.

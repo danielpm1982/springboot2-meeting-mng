@@ -4,6 +4,16 @@ This is a Meeting Management Web MVC application developed with Spring Boot 2
 © 2020 Daniel Pinheiro Maia All Rights Reserved<br>
 (see Copyright© License at the end of this text).
 
+![Home](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/home.png)
+
+![meetings](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/meetings.png)
+
+![addMeeting](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/addMeeting.png)
+
+![updateMeetings](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/updateMeeting.png)
+
+![DB-state-full-join](https://github.com/danielpm1982/springboot2-meeting-mng/blob/master/src/main/java/com/danielpm1982/springboot2meetingmng/test/fullJoin.png)
+
 [**Description of this repository**]<br>
 This is a Meeting Management Web MVC application developed with Spring Boot 2, along with HTML5, CSS, Thymeleaf, Spring Web MVC, Spring Data JPA (Hibernate) and H2 in-memory database (easily extendable to use any other DBMS). Stereotype annotations used: @Controller, @RequestMapping, @GetMapping, @PostMapping, @Autowired (implicitly), @Service, @Repository and persistence annotations: @Entity, @Table, @Id, @GeneratedValue, @Column, @OneToOne, @OneToMany, @ManyToOne, @ManyToMany, @JoinColumn, @JoinTable, @Query, @Enumerated. For more info, read the project comments at each class, starting from the @SpringBootApplication Main class.
 

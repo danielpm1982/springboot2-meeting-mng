@@ -9,37 +9,46 @@
     <h1>PLACES</h1>
     <div class="tableResult" th:if="${places != null && places.isEmpty() != true}">
         <div class="rowResultHeader">
-            <span class="cellResult" th:text="ID"></span>
-            <span class="cellResult" th:text="STREET"></span>
-            <span class="cellResult" th:text="NUMBER"></span>
-            <span class="cellResult" th:text="'ZIP CODE'"></span>
-            <span class="cellResult" th:text="CITY"></span>
-            <span class="cellResult" th:text="STATE"></span>
-            <span class="cellResult" th:text="COUNTRY"></span>
-            <span class="cellResult" th:text="DETAILS"></span>
-            <span class="cellResult" th:text="'MEETING LIST'"></span>
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="STREET"></div>
+            <div class="cellResult" th:text="NUMBER"></div>
+            <div class="cellResult" th:text="'ZIP CODE'"></div>
+            <div class="cellResult" th:text="CITY"></div>
+            <div class="cellResult" th:text="STATE"></div>
+            <div class="cellResult" th:text="COUNTRY"></div>
+            <div class="cellResult" th:text="DETAILS"></div>
+            <div class="cellResult" th:text="'MEETING LIST'"></div>
         </div>
         <div class="rowResult" th:each="place : ${places}">
-            <span class="cellResult" th:text="${place.id}"></span>
-            <span class="cellResult" th:text="${place.street}"></span>
-            <span class="cellResult" th:text="${place.number}"></span>
-            <span class="cellResult" th:text="${place.zipCode}"></span>
-            <span class="cellResult" th:text="${place.city}"></span>
-            <span class="cellResult" th:text="${place.state}"></span>
-            <span class="cellResult" th:text="${place.country}"></span>
-            <span class="cellResult" th:text="${place.details}"></span>
-            <span class="cellResult">
+            <div class="cellResult" th:text="${place.id}"></div>
+            <div class="cellResult" th:text="${place.street}"></div>
+            <div class="cellResult" th:text="${place.number}"></div>
+            <div class="cellResult" th:text="${place.zipCode}"></div>
+            <div class="cellResult" th:text="${place.city}"></div>
+            <div class="cellResult" th:text="${place.state}"></div>
+            <div class="cellResult" th:text="${place.country}"></div>
+            <div class="cellResult" th:text="${place.details}"></div>
+            <div class="cellResult">
                 <ul th:each="meeting : ${place.meetingList}">
-                    <li th:text="${meeting}"></li>
+                    <li>
+                        <p>
+                            <a th:href="@{/show-meeting(meetingId=${meeting.id})}">
+                                <img th:src="@{img/details.png}" th:alt="'details image'" th:title="DETAILS" />
+                            </a>
+                        </p>
+                        <p th:text="'id: '+${meeting.id}" />
+                        <p th:text="'Start: '+${meeting.localDateTimeStart.toLocalDate()}+' '+${meeting.localDateTimeStart.toLocalTime()}"></p>
+                        <p th:text="'End: '+${meeting.localDateTimeEnd.toLocalDate()}+' '+${meeting.localDateTimeEnd.toLocalTime()}"></p>
+                    </li>
                 </ul>
-            </span>
+            </div>
         </div>
     </div>
     <div class="tableResult" th:if="${places == null || places.isEmpty() == true}">
         <h2 th:text="'You have no Places currently registered with us !'" />
     </div>
     <footer>
-        <span><a href="#" title="Add a new place" th:href="@{/add-place-form}">Add New Place</a></span><br>
-        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+        <div><a href="#" title="Add a new place" th:href="@{/add-place-form}">Add New Place</a></div>
+        <div><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></div>
     </footer>
 </body>

@@ -9,17 +9,22 @@
     <h1>MEETINGS</h1>
     <div class="tableResult" th:if="${meetings != null && meetings.isEmpty() != true}">
         <div class="rowResultHeader">
-            <span class="cellResult" th:text="ID"></span>
-            <span class="cellResult" th:text="START"></span>
-            <span class="cellResult" th:text="END"></span>
-            <span class="cellResult" th:text="'PERSON LIST'"></span>
-            <span class="cellResult" th:text="PLACE"></span>
-            <span class="cellResult" th:text="EVENT"></span>
-            <span class="cellResult" th:text="DETAILS"></span>
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="START"></div>
+            <div class="cellResult" th:text="END"></div>
+            <div class="cellResult" th:text="'PERSON LIST'"></div>
+            <div class="cellResult" th:text="PLACE"></div>
+            <div class="cellResult" th:text="EVENT"></div>
+            <div class="cellResult" th:text="DETAILS"></div>
         </div>
         <div class="rowResult" th:each="meeting : ${meetings}">
             <div class="cellResult">
-                <p th:text="${meeting.id}"></p>
+                <p th:text="${meeting.id}" />
+                <p>
+                    <a th:href="@{/show-meeting(meetingId=${meeting.id})}">
+                        <img th:src="@{img/details.png}" th:alt="'details image'" th:title="DETAILS" />
+                    </a>
+                </p>
                 <p>
                     <a th:href="@{/update-meeting-form(meetingId=${meeting.id})}">
                         <img th:src="@{img/update.png}" th:alt="'update image'" th:title="UPDATE" />
@@ -31,23 +36,23 @@
                     </a>
                 </p>
             </div>
-            <span class="cellResult" th:text="${meeting.localDateTimeStart}"></span>
-            <span class="cellResult" th:text="${meeting.localDateTimeEnd}"></span>
-            <span class="cellResult">
+            <div class="cellResult" th:text="${meeting.localDateTimeStart.toLocalDate()}+' '+${meeting.localDateTimeStart.toLocalTime()}"></div>
+            <div class="cellResult" th:text="${meeting.localDateTimeEnd.toLocalDate()}+' '+${meeting.localDateTimeStart.toLocalTime()}"></div>
+            <div class="cellResult">
                 <ul th:each="person : ${meeting.personList}">
-                    <li th:text="${person}"></li>
+                    <li th:text="'id: '+${person.id}+' name: '+${person.name}"></li>
                 </ul>
-            </span>
-            <span class="cellResult" th:text="${meeting.place}"></span>
-            <span class="cellResult" th:text="${meeting.event}"></span>
-            <span class="cellResult" th:text="${meeting.details}"></span>
+            </div>
+            <div class="cellResult" th:text="'id: '+${meeting.place.id}+' street: '+${meeting.place.street}+' number: '+${meeting.place.number}"></div>
+            <div class="cellResult" th:text="'id: '+${meeting.event.id}+' name: '+${meeting.event.name}"></div>
+            <div class="cellResult" th:text="${meeting.details}"></div>
         </div>
     </div>
     <div class="tableResult" th:if="${meetings == null || meetings.isEmpty() == true}">
         <h2 th:text="'You have no Meetings currently registered with us !'" />
     </div>
     <footer>
-        <span><a href="#" title="Add a new meeting" th:href="@{/add-meeting-form}">Add New Meeting</a></span><br>
-        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+        <div><a href="#" title="Add a new meeting" th:href="@{/add-meeting-form}">Add New Meeting</a></div>
+        <div><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></div>
     </footer>
 </body>

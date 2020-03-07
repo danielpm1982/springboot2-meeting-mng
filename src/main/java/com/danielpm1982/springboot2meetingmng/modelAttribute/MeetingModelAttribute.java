@@ -16,7 +16,6 @@ public class MeetingModelAttribute {
     private List<String> personIdList;
     public MeetingModelAttribute() {
     }
-
     public String getId() {
         return id;
     }

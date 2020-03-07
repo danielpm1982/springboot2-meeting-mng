@@ -75,15 +75,7 @@ public class Meeting {
     }
     @Override
     public String toString() {
-        return "Meeting{" +
-                "id=" + id +
-                ", personList=" + personList +
-                ", place=" + place +
-                ", event=" + event +
-                ", localDateTimeStart=" + localDateTimeStart +
-                ", localDateTimeEnd=" + localDateTimeEnd +
-                ", details='" + details + '\'' +
-                '}';
+        return "id: "+id+" personList: "+personList+" place: "+place+" event: "+event+" localDateTimeStart: "+localDateTimeStart+" localDateTimeEnd: "+localDateTimeEnd+" details: "+details;
     }
     @Override
     public boolean equals(Object o) {

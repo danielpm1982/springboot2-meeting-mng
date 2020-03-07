@@ -2,13 +2,18 @@ package com.danielpm1982.springboot2meetingmng.controller;
 import com.danielpm1982.springboot2meetingmng.domain.*;
 import com.danielpm1982.springboot2meetingmng.modelAttribute.MeetingModelAttribute;
 import com.danielpm1982.springboot2meetingmng.service.MeetingManagerServiceInterface;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Controller
@@ -62,6 +67,15 @@ public class MeetingManagerController {
         meetingManagerServiceInterface.deleteMeetingById(meetingId);
         return "redirect:/meetings";
     }
+    //receives a request from the meetings page unique meeting link, with a meetingId as a request parameter; finds the correponding registered meetingToShow instance for that meetingId, using the MeetingManagerServiceInterface findMeetingById() method and corresponding Repository; sends the instance data to the view, as the modelAttribute, for showing only that unique meeting data (not a list of meetings)
+    @GetMapping("/show-meeting")
+    public String showMeeting(@RequestParam("meetingId") Long meetingId, Model model) {
+        Meeting meetingToShow = meetingManagerServiceInterface.findMeetingById(meetingId);
+        model.addAttribute("meetingToShow", meetingToShow);
+        model.addAttribute("localDateTimeStartFormatted", meetingToShow.getLocalDateTimeStart().atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)));
+        model.addAttribute("localDateTimeEndFormatted", meetingToShow.getLocalDateTimeEnd().atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)));
+        return "show-meeting";
+    }
     //utilitary internal method, reused by the addMeeting and updateMeeting methods (refactoring for avoiding code duplicity)
     private Meeting getMeetingObjectFromMeetingModelAttribute(MeetingModelAttribute meetingModelAttribute){
         Meeting meeting = new Meeting(LocalDateTime.parse(meetingModelAttribute.getLocalDateStart()+"T"+meetingModelAttribute.getLocalTimeStart()), LocalDateTime.parse(meetingModelAttribute.getLocalDateEnd()+"T"+meetingModelAttribute.getLocalTimeEnd()));
@@ -79,13 +93,13 @@ public class MeetingManagerController {
         return meeting;
     }
     //utilitary internal method, reused by the addMeetingShowForm and updateMeetingShowForm methods (refactoring for avoiding code duplicity)
-    private void updateSelectOptionsForAvailablePersonsEventsAndPlaces(Model model){
+    private void updateSelectOptionsForAvailablePersonsEventsAndPlaces(Model model) {
         Map<String, String> availablePersonIdNameMap = new HashMap<>();
-        meetingManagerServiceInterface.findAllPersons().forEach(x->availablePersonIdNameMap.put(String.valueOf(x.getId()), x.getName()));
+        meetingManagerServiceInterface.findAllPersons().forEach(x -> availablePersonIdNameMap.put(String.valueOf(x.getId()), x.getName()));
         Map<String, String> availableEventIdNameMap = new HashMap<>();
-        meetingManagerServiceInterface.findAllEvents().forEach(x->availableEventIdNameMap.put(String.valueOf(x.getId()), x.getName()));
+        meetingManagerServiceInterface.findAllEvents().forEach(x -> availableEventIdNameMap.put(String.valueOf(x.getId()), x.getName()));
         Map<String, String> availablePlaceIdAddressMap = new HashMap<>();
-        meetingManagerServiceInterface.findAllPlaces().forEach(x->availablePlaceIdAddressMap.put(String.valueOf(x.getId()), x.getStreet()+", "+x.getNumber()+", "+x.getCity()+" - "+x.getCountry()));
+        meetingManagerServiceInterface.findAllPlaces().forEach(x -> availablePlaceIdAddressMap.put(String.valueOf(x.getId()), x.getStreet() + ", " + x.getNumber() + ", " + x.getCity() + " - " + x.getCountry()));
         model.addAttribute("availablePersonIdNameMap", availablePersonIdNameMap);
         model.addAttribute("availableEventIdNameMap", availableEventIdNameMap);
         model.addAttribute("availablePlaceIdAddressMap", availablePlaceIdAddressMap);

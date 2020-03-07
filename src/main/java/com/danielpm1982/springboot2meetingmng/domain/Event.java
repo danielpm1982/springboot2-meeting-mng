@@ -81,15 +81,7 @@ public class Event {
     }
     @Override
     public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", theme='" + theme + '\'' +
-                ", outfit='" + outfit + '\'' +
-                ", host='" + host + '\'' +
-                ", attendance=" + attendance +
-                ", details='" + details + '\'' +
-                '}';
+        return "id: "+id+" name: "+name+" theme: "+theme+" outfit: "+outfit+" host: "+host+" attendance: "+attendance+" details: "+details;
     }
     @Override
     public boolean equals(Object o) {

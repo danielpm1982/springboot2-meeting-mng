@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" th:href="@{/css/css.css}">
+</head>
+<body>
+    <h1 th:text="'MEETING ID='+${meetingToShow.id}"></h1>
+    <div class="tableResult" th:if="${meetingToShow != null}">
+        <div class="rowResultHeader">
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="START"></div>
+            <div class="cellResult" th:text="END"></div>
+            <div class="cellResult" th:text="'PERSON LIST'"></div>
+            <div class="cellResult" th:text="PLACE"></div>
+            <div class="cellResult" th:text="EVENT"></div>
+            <div class="cellResult" th:text="DETAILS"></div>
+        </div>
+        <div class="rowResult">
+            <div class="cellResult">
+                <p th:text="${meetingToShow.id}"></p>
+                <p>
+                    <a th:href="@{/update-meeting-form(meetingId=${meetingToShow.id})}">
+                        <img th:src="@{img/update.png}" th:alt="'update image'" th:title="UPDATE" />
+                    </a>
+                </p>
+                <p>
+                    <a th:href="@{/delete-meeting(meetingId=${meetingToShow.id})}">
+                        <img th:src="@{img/delete.png}" th:alt="'delete image'" th:title="DELETE" />
+                    </a>
+                </p>
+            </div>
+            <div class="cellResult" th:text="${localDateTimeStartFormatted}"></div>
+            <div class="cellResult" th:text="${localDateTimeEndFormatted}"></div>
+            <div class="cellResult">
+                <ul class="list" th:each="person : ${meetingToShow.personList}">
+                    <li class="itemList" th:text="${person}" /><br>
+                </ul>
+            </div>
+            <div class="cellResult" th:text="${meetingToShow.place}"></div>
+            <div class="cellResult" th:text="${meetingToShow.event}"></div>
+            <div class="cellResult" th:text="${meetingToShow.details}"></div>
+        </div>
+    </div>
+    <div class="tableResult" th:if="${meetingToShow == null}">
+        <h2 th:text="'Invalid Meeting data requested !'" />
+    </div>
+    <footer>
+        <div><a href="#" title="List all meetings" th:href="@{/meetings}">List all Meetings</a></div>
+        <div><a href="#" title="Add a new meeting" th:href="@{/add-meeting-form}">Add New Meeting</a></div>
+        <div><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></div>
+    </footer>
+</body>

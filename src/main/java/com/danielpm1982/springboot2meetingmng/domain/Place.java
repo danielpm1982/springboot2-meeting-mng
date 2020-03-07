@@ -90,16 +90,7 @@ public class Place {
     }
     @Override
     public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", number='" + number + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", details='" + details + '\'' +
-                '}';
+        return "id: "+id+" street: "+street+" number: "+number+" zipCode: "+zipCode+" city: "+city+" state: "+state+" country: "+country+" details: "+details;
     }
     @Override
     public boolean equals(Object o) {

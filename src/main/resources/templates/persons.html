@@ -9,37 +9,46 @@
     <h1>PERSONS</h1>
     <div class="tableResult" th:if="${persons != null && persons.isEmpty() != true}">
         <div class="rowResultHeader">
-            <span class="cellResult" th:text="ID"></span>
-            <span class="cellResult" th:text="NAME"></span>
-            <span class="cellResult" th:text="GENDER"></span>
-            <span class="cellResult" th:text="POSITION"></span>
-            <span class="cellResult" th:text="COMPANY"></span>
-            <span class="cellResult" th:text="'BIRTH DATE'"></span>
-            <span class="cellResult" th:text="EMAIL"></span>
-            <span class="cellResult" th:text="DETAILS"></span>
-            <span class="cellResult" th:text="'MEETING LIST'"></span>
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="NAME"></div>
+            <div class="cellResult" th:text="GENDER"></div>
+            <div class="cellResult" th:text="POSITION"></div>
+            <div class="cellResult" th:text="COMPANY"></div>
+            <div class="cellResult" th:text="'BIRTH DATE'"></div>
+            <div class="cellResult" th:text="EMAIL"></div>
+            <div class="cellResult" th:text="DETAILS"></div>
+            <div class="cellResult" th:text="'MEETING LIST'"></div>
         </div>
         <div class="rowResult" th:each="person : ${persons}">
-            <span class="cellResult" th:text="${person.id}"></span>
-            <span class="cellResult" th:text="${person.name}"></span>
-            <span class="cellResult" th:text="${person.gender}"></span>
-            <span class="cellResult" th:text="${person.position}"></span>
-            <span class="cellResult" th:text="${person.company}"></span>
-            <span class="cellResult" th:text="${person.birthDate}"></span>
-            <span class="cellResult" th:text="${person.email}"></span>
-            <span class="cellResult" th:text="${person.details}"></span>
-            <span class="cellResult">
+            <div class="cellResult" th:text="${person.id}"></div>
+            <div class="cellResult" th:text="${person.name}"></div>
+            <div class="cellResult" th:text="${person.gender}"></div>
+            <div class="cellResult" th:text="${person.position}"></div>
+            <div class="cellResult" th:text="${person.company}"></div>
+            <div class="cellResult" th:text="${person.birthDate}"></div>
+            <div class="cellResult" th:text="${person.email}"></div>
+            <div class="cellResult" th:text="${person.details}"></div>
+            <div class="cellResult">
                 <ul th:each="meeting : ${person.meetingList}">
-                    <li th:text="${meeting}"></li>
+                    <li>
+                        <p>
+                            <a th:href="@{/show-meeting(meetingId=${meeting.id})}">
+                                <img th:src="@{img/details.png}" th:alt="'details image'" th:title="DETAILS" />
+                            </a>
+                        </p>
+                        <p th:text="'id: '+${meeting.id}" />
+                        <p th:text="'Start: '+${meeting.localDateTimeStart.toLocalDate()}+' '+${meeting.localDateTimeStart.toLocalTime()}"></p>
+                        <p th:text="'End: '+${meeting.localDateTimeEnd.toLocalDate()}+' '+${meeting.localDateTimeEnd.toLocalTime()}"></p>
+                    </li>
                 </ul>
-            </span>
+            </div>
         </div>
     </div>
     <div class="tableResult" th:if="${persons == null || persons.isEmpty() == true}">
         <h2 th:text="'You have no Persons currently registered with us !'" />
     </div>
     <footer>
-        <span><a href="#" title="Add a new person" th:href="@{/add-person-form}">Add New Person</a></span><br>
-        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+        <div><a href="#" title="Add a new person" th:href="@{/add-person-form}">Add New Person</a></div>
+        <div><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></div>
     </footer>
 </body>

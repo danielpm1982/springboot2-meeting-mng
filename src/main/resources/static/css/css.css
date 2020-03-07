@@ -3,35 +3,66 @@ body{
     text-align: center;
     background-color: black;
     color: antiquewhite;
-    margin-top: 3em;
-    margin-bottom: 4em;
+    margin-top: 2.3em;
+    margin-bottom: 2.3em;
+}
+a:link{
+    color: green;
+}
+a:visited{
+    color: teal;
+}
+a:hover{
+    color: lime;
+}
+a:active{
+    color: red;
 }
 .centralContent{
     width: 90%;
-    margin: auto;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 2em auto 2em auto;
 }
 .table{
     display: table;
-    width: 60%;
-    margin: auto;
-    border-collapse: separate;
-    border-spacing: 1em;
+    width: 50%;
+    margin: 3em auto 2em auto;
+    border-collapse: collapse;
 }
 .row{
     display: table-row;
 }
 .cell{
     display: table-cell;
-    font-size: 1.5em;
-    font-weight: bolder;
-    background-color: azure;
-    border-radius: 10px;
-    padding: 0.5em;
 }
-.cell a{
-    text-decoration: none;
+a.cel:link{
+    background-color: black;
+    border: none;
+}
+a.cel:visited{
+    background-color: black;
+    border: none;
+}
+a.cell:hover{
+    border: lightgreen solid medium;
+}
+a.cell:not(:hover){
+    background-color: black;
+    border: none;
+}
+a.cell:active{
+    background-color: azure;
+}
+img#meeting{
+    width: 18em;
+}
+img#meeting2{
+    width: 16em;
+}
+img#meeting3{
+    width: 24em;
+}
+img#meeting4{
+    width: 24em;
 }
 .tableResult{
     display: table;
@@ -50,7 +81,7 @@ body{
     border: lightblue solid thin;
 }
 .cellResult img{
-    width: 40px;
+    width: 30px;
     margin-top: 1em;
 }
 .tableResult .rowResult:nth-child(2n+1){
@@ -65,18 +96,6 @@ body{
     background-color: darkblue;
     font-weight: bolder;
     color: blanchedalmond;
-}
-a:link{
-    color: green;
-}
-a:visited{
-    color: teal;
-}
-a:hover{
-    color: lime;
-}
-a:active{
-    color: red;
 }
 footer{
     font-size: 1.2em;
@@ -95,20 +114,6 @@ footer a{
     font-size: 1.2em;
     line-height: 2;
     text-decoration: none;
-}
-img#meeting{
-    width: 19em;;
-}
-img#meeting2{
-    width: 18em;
-    margin-right: 2em
-}
-img#meeting3{
-    width: 24em;
-}
-img#meeting4{
-    margin-left: 0.6em;
-    width: 24em;
 }
 ul{
     margin-left: -1.5em;
@@ -145,9 +150,6 @@ fieldset{
     margin: 0.2em 0em 0.7em 0.95em;
     padding-bottom: 1em;
 }
-ul, li{
-    display: inline;
-}
 input[type="submit"], input[type="button"]{
     font-weight: bolder;
     width: 20%;
@@ -165,15 +167,6 @@ textarea{
     font-size: 1.62em;
     margin: 0.7em auto 1.2em auto;
 }
-.error{
-    background-color: yellow;
-    color: red;
-    padding: 0.2em;
-    font-size: 1.2em;
-    font-weight: bolder;
-    width: 38%;
-    margin: auto auto -2em auto;
-}
 select{
     padding: 0.5em;
     width: 40%;
@@ -185,4 +178,16 @@ select.meeting{
 }
 select.meetingMultiple{
     width: 95.5%;
+}
+span{
+    margin-right: 1em;
+}
+.error{
+    background-color: yellow;
+    color: red;
+    padding: 0.2em;
+    font-size: 1.2em;
+    font-weight: bolder;
+    width: 38%;
+    margin: auto auto -2em auto;
 }

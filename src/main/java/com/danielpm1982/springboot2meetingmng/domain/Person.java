@@ -1,6 +1,8 @@
 package com.danielpm1982.springboot2meetingmng.domain;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 
 @Entity
@@ -90,16 +92,7 @@ public class Person {
         this.meetingList = meetingList;
     }
     public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", gender=" + gender +
-                ", position='" + position + '\'' +
-                ", company='" + company + '\'' +
-                ", birthDate=" + birthDate +
-                ", email='" + email + '\'' +
-                ", details='" + details + '\'' +
-                '}';
+        return "id: "+id+" name: "+name+" gender: "+String.valueOf(gender).toLowerCase()+" position: "+position+" company: "+company+" birthDate: "+birthDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))+" email: "+email+" details: "+details;
     }
     @Override
     public boolean equals(Object o) {

@@ -9,31 +9,42 @@
     <h1>EVENTS</h1>
     <div class="tableResult" th:if="${events != null && events.isEmpty() != true}">
         <div class="rowResultHeader">
-            <span class="cellResult" th:text="ID"></span>
-            <span class="cellResult" th:text="NAME"></span>
-            <span class="cellResult" th:text="THEME"></span>
-            <span class="cellResult" th:text="OUTFIT"></span>
-            <span class="cellResult" th:text="HOST"></span>
-            <span class="cellResult" th:text="ATTENDANCE"></span>
-            <span class="cellResult" th:text="DETAILS"></span>
-            <span class="cellResult" th:text="MEETING"></span>
+            <div class="cellResult" th:text="ID"></div>
+            <div class="cellResult" th:text="NAME"></div>
+            <div class="cellResult" th:text="THEME"></div>
+            <div class="cellResult" th:text="OUTFIT"></div>
+            <div class="cellResult" th:text="HOST"></div>
+            <div class="cellResult" th:text="ATTENDANCE"></div>
+            <div class="cellResult" th:text="DETAILS"></div>
+            <div class="cellResult" th:text="MEETING"></div>
         </div>
         <div class="rowResult" th:each="event : ${events}">
-            <span class="cellResult" th:text="${event.id}"></span>
-            <span class="cellResult" th:text="${event.name}"></span>
-            <span class="cellResult" th:text="${event.theme}"></span>
-            <span class="cellResult" th:text="${event.outfit}"></span>
-            <span class="cellResult" th:text="${event.host}"></span>
-            <span class="cellResult" th:text="${event.attendance}"></span>
-            <span class="cellResult" th:text="${event.details}"></span>
-            <span class="cellResult" th:text="${event.meeting}"></span>
+            <div class="cellResult" th:text="${event.id}"></div>
+            <div class="cellResult" th:text="${event.name}"></div>
+            <div class="cellResult" th:text="${event.theme}"></div>
+            <div class="cellResult" th:text="${event.outfit}"></div>
+            <div class="cellResult" th:text="${event.host}"></div>
+            <div class="cellResult" th:text="${event.attendance}"></div>
+            <div class="cellResult" th:text="${event.details}"></div>
+            <div class="cellResult">
+                <div th:if="${event.meeting != null}">
+                    <p>
+                        <a th:href="@{/show-meeting(meetingId=${event.meeting.id})}">
+                            <img th:src="@{img/details.png}" th:alt="'details image'" th:title="DETAILS" />
+                        </a>
+                    </p>
+                    <p th:text="'id: '+${event.meeting.id}" />
+                    <p th:text="'Start: '+${event.meeting.localDateTimeStart.toLocalDate()}+' '+${event.meeting.localDateTimeStart.toLocalTime()}"></p>
+                    <p th:text="'End: '+${event.meeting.localDateTimeEnd.toLocalDate()}+' '+${event.meeting.localDateTimeEnd.toLocalTime()}"></p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="tableResult" th:if="${events == null || events.isEmpty() == true}">
         <h2 th:text="'You have no Events currently registered with us !'" />
     </div>
     <footer>
-        <span><a href="#" title="Add a new event" th:href="@{/add-event-form}">Add New Event</a></span><br>
-        <span><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></span>
+        <div><a href="#" title="Add a new event" th:href="@{/add-event-form}">Add New Event</a></div>
+        <div><a href="#" title="Welcome Home Page" th:href="@{/}">Home</a></div>
     </footer>
 </body>

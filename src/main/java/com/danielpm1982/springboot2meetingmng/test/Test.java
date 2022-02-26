@@ -8,40 +8,42 @@ import java.util.Arrays;
 
 @Component
 public class Test {
-    private MeetingManagerServiceInterface meetingManagerServiceInterface;
+    final private MeetingManagerServiceInterface meetingManagerServiceInterface;
     public Test(MeetingManagerServiceInterface meetingManagerServiceInterface) {
         this.meetingManagerServiceInterface=meetingManagerServiceInterface;
     }
     public void test(){
         System.out.println("###########################################################");
-        System.out.println("POPULATING...");
+        System.out.println("POPULATING IF DATA DOES NOT EXIST YET...");
         System.out.println("###########################################################");
-        Person person1 = new Person("person1", Gender.MALE, LocalDate.of(1980,1,15), "person1@person.com");
-        person1.setPosition("CIO");
-        person1.setCompany("danielpm1982.com");
-        person1.setDetails("Will go with 3 more family companions: wife and 2 children. Wife love ice-creams, kids love pizza.");
-        Person person2 = new Person("person2", Gender.MALE, LocalDate.of(1970,10,10), "person2@person.com");
-        person2.setPosition("Chief Software Engineer");
-        person2.setCompany("danielpm1982.com");
-        person2.setDetails("Will go with 1 more family companion: 1 child. Both love chocolates.");
-        Person person3 = new Person("person3", Gender.FEMALE, LocalDate.of(1985,1,10), "person3@person.com");
-        person3.setPosition("Senior Software Engineer");
-        person3.setCompany("danielpm1982.com");
-        person3.setDetails("Will go with all his development staff team: 250 people in total.");
-        meetingManagerServiceInterface.addPersonList(Arrays.asList(person1, person2, person3));
-        Place place1 = new Place("streetA", 1000, "cityA", "stateA", "countryA");
-        place1.setZipCode("60000000");
-        place1.setDetails("Building name: Hotel A Plaza, Event Center 2nd floor. Tickets needed. Multimedia center with a 100-inch screen available. 1tbps internet available for all customers, lecturers, panel members, etc. 500 people total capacity. Allowed a max of 10% more.");
-        meetingManagerServiceInterface.addPlace(place1);
-        Event event1 = new Event("Strategic planning for 2020 year: Mars project", "Futurist, Interestellar, Spaceship Travel", "Social, Office Suits, Gala dresses", "danielpm1982.com", 150);
-        event1.setDetails("The space has been completely reserved for the host guests. No unrelated customers allowed at this particular event.");
-        meetingManagerServiceInterface.addEvent(event1);
-        Meeting meeting1 = new Meeting(LocalDateTime.of(2020,7,1,18,0,0), LocalDateTime.of(2020,7,2,2,30,0));
-        meeting1.setEvent(event1);
-        meeting1.setPlace(place1);
-        meeting1.setDetails("First day is reserved since 10:00 am. Second day until 06:00 am.");
-        meeting1.setPersonList(Arrays.asList(person1, person2, person3));
-        meetingManagerServiceInterface.addOrUpdateMeeting(meeting1);
+        if(meetingManagerServiceInterface.findAllPersons().isEmpty()){
+            Person person1 = new Person("person1", Gender.MALE, LocalDate.of(1980,1,15), "person1@person.com");
+            person1.setPosition("CIO");
+            person1.setCompany("danielpm1982.com");
+            person1.setDetails("Will go with 3 more family companions: wife and 2 children. Wife love ice-creams, kids love pizza.");
+            Person person2 = new Person("person2", Gender.MALE, LocalDate.of(1970,10,10), "person2@person.com");
+            person2.setPosition("Chief Software Engineer");
+            person2.setCompany("danielpm1982.com");
+            person2.setDetails("Will go with 1 more family companion: 1 child. Both love chocolates.");
+            Person person3 = new Person("person3", Gender.FEMALE, LocalDate.of(1985,1,10), "person3@person.com");
+            person3.setPosition("Senior Software Engineer");
+            person3.setCompany("danielpm1982.com");
+            person3.setDetails("Will go with all his development staff team: 250 people in total.");
+            meetingManagerServiceInterface.addPersonList(Arrays.asList(person1, person2, person3));
+            Place place1 = new Place("streetA", 1000, "cityA", "stateA", "countryA");
+            place1.setZipCode("60000000");
+            place1.setDetails("Building name: Hotel A Plaza, Event Center 2nd floor. Tickets needed. Multimedia center with a 100-inch screen available. 1tbps internet available for all customers, lecturers, panel members, etc. 500 people total capacity. Allowed a max of 10% more.");
+            meetingManagerServiceInterface.addPlace(place1);
+            Event event1 = new Event("Strategic planning for 2020 year: Mars project", "Futurist, Interestellar, Spaceship Travel", "Social, Office Suits, Gala dresses", "danielpm1982.com", 150);
+            event1.setDetails("The space has been completely reserved for the host guests. No unrelated customers allowed at this particular event.");
+            meetingManagerServiceInterface.addEvent(event1);
+            Meeting meeting1 = new Meeting(LocalDateTime.of(2020,7,1,18,0,0), LocalDateTime.of(2020,7,2,2,30,0));
+            meeting1.setEvent(event1);
+            meeting1.setPlace(place1);
+            meeting1.setDetails("First day is reserved since 10:00 am. Second day until 06:00 am.");
+            meeting1.setPersonList(Arrays.asList(person1, person2, person3));
+            meetingManagerServiceInterface.addOrUpdateMeeting(meeting1);
+        }
         System.out.println("###########################################################");
         System.out.println("COMPLETE !");
         System.out.println("###########################################################");

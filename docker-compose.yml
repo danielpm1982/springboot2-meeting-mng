@@ -1,0 +1,31 @@
+services:
+  app:
+    image: danielpm1982/meeting-app:v.2.0.0
+    container_name: meeting-app-springboot-container
+    ports:
+      - 8080:8080
+    environment:
+      MYSQL_PORT_3306_TCP_ADDR: meeting-app-mysql-container
+      MYSQL_PORT_3306_TCP_PORT: 3306
+      MYSQL_ENV_MYSQL_DATABASE: meeting_app_db
+      MYSQL_ENV_MYSQL_USER: danielpm1982_user
+      MYSQL_ENV_MYSQL_PASSWORD: admin
+    depends_on:
+      mysql:
+        condition: service_healthy
+  mysql:
+    image: mysql:8
+    container_name: meeting-app-mysql-container
+    volumes:
+      - /home/daniel/temp/mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: meeting_app_db
+      MYSQL_USER: danielpm1982_user
+      MYSQL_PASSWORD: admin
+    healthcheck:
+      test: ["CMD-SHELL", 'mysqladmin ping']
+      interval: 10s
+      timeout: 2s
+      retries: 10  
+  
